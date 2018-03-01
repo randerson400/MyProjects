@@ -1,0 +1,158 @@
+---
+title: "fuzzy"
+author: "Ryan Anderson"
+date: "February 27, 2018"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(sets)
+sets_options("universe", seq(1, 100, 0.5))
+
+```
+
+
+```{r}
+
+variables <- set(
+  temperature = fuzzy_partition(varnames = c(cold = 30, good = 70, hot = 90),
+                                sd = 5.0),
+  humidity = fuzzy_partition(varnames = c(dry = 30, good = 60, wet = 80), 
+                             sd = 3.0),
+  precipitation = fuzzy_partition(varnames = c(no.rain = 30, little.rain = 60,
+                                               rain = 90), sd = 7.5),
+  weather = fuzzy_partition(varnames = c(bad = 40, ok = 65, perfect = 80),
+                            FUN = fuzzy_cone, radius = 10)
+)
+
+```
+
+```{r}
+
+# Fuzzy rules
+rules <- set(
+  fuzzy_rule(temperature %is% good && humidity %is% dry &&
+               precipitation %is% no.rain, weather %is% perfect),
+  fuzzy_rule(temperature %is% hot && humidity %is% wet &&
+               precipitation %is% rain, weather %is% bad),
+  fuzzy_rule(temperature %is% cold, weather %is% bad),
+  fuzzy_rule(temperature %is% good || humidity %is% good ||
+               precipitation %is% little.rain, weather %is% ok),
+  fuzzy_rule(temperature %is% hot && precipitation %is% little.rain,
+             weather %is% ok),
+  fuzzy_rule(temperature %is% hot && humidity %is% dry &&
+               precipitation %is% little.rain, weather %is% ok)
+)
+
+```
+
+```{r}
+
+model <- fuzzy_system(variables, rules)
+plot(model)
+
+```
+```{r}
+
+example.1 <- fuzzy_inference(model, list(temperature = 75, humidity = 0,
+                                       precipitation = 70))
+gset_defuzzify(example.1, "centroid")
+plot(example.1)
+
+```
+
+```{r}
+
+library(fuzzySim)
+data(rotifers)
+head(rotifers, 10)
+
+```
+
+```{r}
+
+rotifers$spcode <- spCodes(rotifers$species, sep.species = "_", nchar.gen = 1, nchar.sp = 5, nchar.ssp = 0, sep.spcode = "")
+head(rotifers, 10)
+
+```
+
+```{r}
+
+rotifers.presabs <- splist2presabs(rotifers, sites.col = "TDWG4", sp.col = "spcode", keep.n = FALSE)
+
+```
+
+```{r}
+
+dir.create("TDWG4_shapefile") 
+download.file("http://www.kew.org/gis/tdwg/downloads/level4.zip", destfile = "TDWG4_shapefile/TDWG_level4.zip", method = "auto") 
+unzip("TDWG4_shapefile/TDWG_level4.zip", exdir = "TDWG4_shapefile")
+
+```
+
+```{r}
+
+library(rgdal)
+TDWG4shp <- readOGR(dsn = "TDWG4_shapefile", layer = "level4")
+
+```
+
+```{r}
+
+unlink("TDWG4_shapefile", recursive = TRUE)
+TDWG4shp@data <- data.frame(TDWG4shp@data, rotifers.presabs[match(TDWG4shp@data$Level4_cod, rotifers.presabs$TDWG4), ])
+
+```
+
+```{r}
+
+print(spplot(TDWG4shp, zcol = "Abrigh", col.regions = rev(heat.colors(256)), main = expression(paste(italic("A. brightwellii"), " occurrence records"))))
+
+```
+
+```{r, include = FALSE}
+
+data(rotif.env)
+rotifers.tsa <- multTSA(rotif.env, sp.cols = 18:47, coord.cols = c("Longitude", "Latitude"), id.col = 1, degree = 3, step = TRUE)
+
+```
+
+```{r}
+
+range(rotifers.tsa[ , -1])
+
+
+```
+
+
+```{r}
+
+TDWG4shp@data <- data.frame(TDWG4shp@data, rotifers.tsa[match(TDWG4shp@data$Level4_cod, rotifers.tsa$TDWG4), ]) 
+
+```
+
+```{r}
+
+print(spplot(TDWG4shp, zcol = "Abrigh_TS", col.regions = rev(heat.colors(256)), main = expression(paste(italic("A. brightwellii"), " TSA"))))
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
