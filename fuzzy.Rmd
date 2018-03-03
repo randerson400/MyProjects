@@ -13,6 +13,7 @@ sets_options("universe", seq(1, 100, 0.5))
 
 ```
 
+Set variables 
 
 ```{r}
 
@@ -139,7 +140,7 @@ print(spplot(TDWG4shp, zcol = "Abrigh_TS", col.regions = rev(heat.colors(256)), 
 
 ```
 
-
+This final plot shows how endangered a species is in eachc country, rather than a simple whether it is endangered or not. 
 
 
 
