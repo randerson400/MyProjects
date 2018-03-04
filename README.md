@@ -22,4 +22,8 @@ This was created by Dr. Jamie Kelley, and further explored by Ryan Anderson.
 This directory includes all files that are necessary to implement a dictionary using a hassh table. This dictionary is then tested using movies to fill the dictionary. Hash tables are used to search through a dictionary very efficiently. The hash function calculates a psuedorandom position for the movie based on its title. This allows the dictionary to access a movie in near constant time. 
 
 I wrote this project in collaboration with Brett Weicht. 
+
+### 4. Portfolio
+
+My porftolio was created at the end of my CS 271: Data Systems class. It details all of the major topics covered over the course of the semester. I make a case for my level of understanding for each topic, using projects, exams, and homework. In a more general sense, this protfolio documents the knowledge I gained in this class and the progress I made on the topics.
  
