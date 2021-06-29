@@ -1,0 +1,363 @@
+---
+title: "Transfers"
+author: "Ryan Anderson"
+date: "March 11, 2019"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE)
+
+library("dplyr")
+library("ggplot2")
+library("lmtest")
+library("caret")
+library("ggmap")
+library("foreign")
+library("MASS")
+
+```
+
+Import data files
+
+```{r, echo=FALSE}
+
+transfers = read.csv("transfers.csv")
+transfers = transfers[complete.cases(transfers),]
+rankings = read.csv("fifa_ranking.csv")
+
+```
+
+## Merging and cleaning
+
+I decided to only take the rankings from the month of june, since the transfer window is open over the summer
+
+```{r, include = FALSE}
+keep = c("rank", "country_abrv", "rank_date")
+rankings = rankings[,keep]
+rankings$year = strtoi(substr(rankings$rank_date, 0, 4))
+rankings$month = strtoi(substr(rankings$rank_date, 6, 7))
+rankings = rankings[rankings$year >= 2014,]
+rankings = rankings[rankings$month == 06,]
+keep = c("rank", "country_abrv", "year")
+rankings = rankings[,keep]
+rankings
+
+```
+
+Both datasets are joined by nationality and year
+
+```{r, echo = FALSE}
+
+transfers = merge(transfers, rankings, by.x = c("Nationality", "Year"), by.y=c("country_abrv", "year"))
+transfers$Fee = as.integer(transfers$Fee)
+
+```
+
+separate data for each position
+
+```{r, echo = FALSE}
+
+keepers = transfers[transfers$Position == "GK",]
+transfers_out = transfers[transfers$Position != "GK",]
+
+forwards = transfers[transfers$Position_Gen == "FWD",]
+mids = transfers[transfers$Position_Gen == "MID",]
+defenders = transfers[transfers$Position_Gen == "DEF",]
+
+```
+
+
+## Checking for normality with a histogram
+
+```{r, echo = FALSE}
+
+transfers%>%
+  ggplot(aes(x=Fee)) +
+  geom_histogram(binwidth=10, color = "steelblue4", fill = "steelblue1")+
+  ggtitle("Distribution of Transfer Fees") +
+  labs(y = "Frequency", x = "Fee (in Millions of Euros)") 
+
+```
+
+```{r, echo = FALSE}
+
+transfers%>%
+  ggplot(aes(x=Fee)) +
+  geom_histogram(binwidth=10, color = "steelblue4", fill = "steelblue1")+
+  facet_wrap(~Position_Gen) + 
+  ggtitle("Distribution of Transfer Fees by Position") +
+  labs(y = "Frequency", x = "Fee (in Millions of Euros)") 
+
+```
+
+
+### Correlation matrix to test for multicolinearity
+
+```{r, echo = FALSE}
+
+transfers_cont = data.frame(rank = transfers_out$rank,
+                            age = transfers_out$Age,
+                            appearances = transfers_out$Appearances,
+                            goals = transfers_out$Goals,
+                            assists = transfers_out$Assists)
+
+cor(transfers_cont)
+
+```
+
+
+The above table is a correlation matrix for all of my continuous independent variables: FIFA Ranking, appearances, goals, and assists. All of the coefficients are below 0.3, which means that there is no issue of multicolinearity. 
+
+## Create dummy variables for position to make interaction variables
+
+```{r}
+
+for(level in unique(transfers_out$Position_Gen)){
+  transfers_out[paste("dummy", level, sep = "_")] <- ifelse(transfers_out$Position_Gen == level, 1, 0)
+}
+
+names(transfers_out)[names(transfers_out) == "dummy_FWD"] = "FWD"
+names(transfers_out)[names(transfers_out) == "dummy_MID"] = "MID"
+names(transfers_out)[names(transfers_out) == "dummy_DEF"] = "DEF"
+
+head(transfers_out)
+
+```
+
+```{r}
+
+transfers_out$FWD_Goals = transfers_out$FWD * transfers_out$Goals
+
+head(transfers_out)
+
+```
+
+## Running Linear Models
+
+```{r}
+
+model1 = lm(log(Fee)~Age+(rank)+Appearances+Goals+Assists+CSL+Year+Position_Gen, data=transfers_out)
+summary(model1)
+
+```
+
+
+Breusch Pagan Test for heteroscedasticity
+
+```{r}
+
+bptest(model1)
+
+```
+
+Since p-value is less than 0.05, this shows that heteroscedasticity exists, meaning that the variance of the residuals is not constant. This can bias the standard errors of the coefficients, which affects the significance of each coefficient. Adjust using a GLS, shown below.
+
+```{r}
+
+transfers_out$resi = model1$residuals
+varfunc = lm(log(resi^2) ~ log(Age) + log(FIFA_Rank) + log(Appearances) + log(Goals+.0001) +log(Assists+.0001) + log(Year), data = transfers_out)
+
+transfers_out$varfunc = exp(varfunc$fitted.values)
+transfers_gls = lm(Fee~(Age)+(rank)+Appearances+Goals+Assists+CSL+Year, weights = 1/sqrt(varfunc), data = transfers_out)
+
+summary(transfers_gls)
+
+```
+
+## OLS Using Forwards only
+
+```{r}
+
+model_fwd = lm(log(Fee)~log(rank)+Goals+Assists+Year, data=forwards)
+summary(model_fwd)
+
+```
+
+```{r}
+
+bptest(model_fwd)
+
+```
+
+forwards residual plot
+
+```{r}
+
+par(mfrow=c(2,2)) # init 4 charts in 1 panel
+plot(model_fwd)
+
+```
+
+GLS for forwards
+
+```{r}
+
+forwards$resi = model_fwd$residuals
+varfunc = lm(log(resi^2) ~ log(Age) + log(FIFA_Rank) + log(Appearances) + log(Goals+.0001) +log(Assists+.0001) + log(Year), data = forwards)
+
+forwards$varfunc = exp(varfunc$fitted.values)
+transfers_fwd_gls = lm(Fee~(Age)+log(rank)+Appearances+Goals+Assists+Year, weights = 1/sqrt(varfunc), data = forwards)
+
+summary(transfers_fwd_gls)
+
+```
+
+
+```{r}
+
+ggplot(forwards, aes(Fee, predict(model_fwd))) + 
+    geom_point() +
+    xlab("Actual Fees") + ylab("Predicted Fees") +
+    ggtitle("Actual vs Predicted Transfer Fees for Forwards") +
+    geom_smooth(method = "lm")+
+    geom_abline(slope = 1, intercept = 0, color="red")
+
+```
+
+
+
+Predicting values for Eden Hazard's Season
+
+```{r}
+
+-13850 - 1.567*28 - 9.804*log(1) - 0.05326*41 + 1.116*17 + 3.364*12 + 6.9*2019
+
+```
+
+
+## Outlier testing
+
+
+```{r, echo = FALSE}
+
+ggplot(data = transfers_out, aes(Fee))+
+  geom_histogram(color = "steelblue4", fill = "steelblue1")+
+  xlab("Transfer Fee") + ylab("Count") + ggtitle("Distribution of Transfer Fees")
+
+```
+
+The outlier values are 81.0, 121.5, 199.8, 94.5, 108.0, 121.5, and 105.3.
+
+```{r, echo = FALSE}
+
+outliers = boxplot(transfers_out$Fee, plot=FALSE)$out
+transfers_noOutliers = transfers_out[transfers_out$Fee < 80.0,]
+
+boxplot(transfers_noOutliers$Fee)
+
+```
+
+
+## KNN Regression
+
+Finding an optimal k
+
+```{r}
+
+library("kknn")
+
+transfers_knn<- train.kknn(Fee~(Age)+log(rank)+Appearances+Goals+Assists+Year, data=forwards,  kmax = 15, kernel = 
+	"optimal", distance = 1)
+    
+plot(transfers_knn, main = "k-values vs MSE", col = "steelblue4")
+
+```
+
+
+```{r, echo = FALSE}
+
+knnRegGraph = function(df) {
+  df_cont = data.frame(rank = df$FIFA_Rank,
+                            age = df$Age,
+                            appearances = df$Appearances,
+                            goals = df$Goals,
+                            assists = df$Assists,
+                            fee = df$Fee,
+                            year = df$Year)
+  
+  train = df_cont[0:as.integer(.8*nrow(df_cont)),]
+  test = df_cont[as.integer(.8*nrow(df_cont)):nrow(df_cont),]
+  
+  xTrain = train[, -6]
+  yTrain = train[,6]
+  
+  xTest = test[,-6]
+  yTest = test[,6]
+  
+  fit = knnreg(xTrain, yTrain, k=12)
+  summary(fit)
+
+  
+  
+  plot(yTest, predict(fit, xTest), xlab = "Actual Transfer Fee", ylab = "Predicted Transfer Fee", main = "KNN Regression Predictions", col = "steelblue4", xlim = c(0,100), ylim = c(0,100)) 
+}
+
+```
+ 
+ 
+All of this preliminary analysis was done before adjusting the data. I expect to see a significant improvement to my results after I adjust the data to be normal, adjust for yearly inflation and heteroscedasticity, and remove outliers. It will be interesting to see how much my results improve after the adjustments. 
+ 
+```{r}
+
+df = transfers_out
+
+df_cont = data.frame(rank = df$FIFA_Rank,
+                            age = df$Age,
+                            appearances = df$Appearances,
+                            goals = df$Goals,
+                            assists = df$Assists,
+                            fee = df$Fee,
+                            year = df$Year)
+  
+  train = df_cont[0:as.integer(.8*nrow(df_cont)),]
+  test = df_cont[as.integer(.8*nrow(df_cont)):nrow(df_cont),]
+  
+  xTrain = train[, -6]
+  yTrain = train[,6]
+  
+  xTest = test[,-6]
+  yTest = test[,6]
+  
+  fit = knnreg(xTrain, yTrain, k=12)
+  
+
+```
+
+# manual calculation of r-squared
+
+```{r}
+
+pred = predict(fit, xTest)
+n=22
+
+numerator = (n*sum(pred*yTest)) - sum(yTest)*sum(pred)
+
+denom = sqrt((n*sum(yTest^2)-(sum(yTest))^2) *(n*sum(pred^2) - (sum(pred))^2) )
+r_sq = numerator/denom
+r_sq
+
+```
+
+ 
+```{r, echo = FALSE}
+
+knnRegGraph(transfers_out)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+

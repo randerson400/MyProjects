@@ -1,0 +1,134 @@
+Player,Age,Position,Position_Gen,Fee,Left,Joined,Year,Nationality,FIFA_Rank,Appearances,Goals,Assists,Clean Sheets,Conceded,CSL
+Luis Suarez,27,ST,FWD,73.55,Liverpool,FC Barcelona,2014,URA,7,37,31,19,0,0,0
+James Rodriguez,23,CAM,MID,67.5,Monaco,Real Madrid,2014,COL,8,38,9,14,0,0,0
+Angel Di Maria,26,RW,FWD,67.5,Real Madrid,Man Utd,2014,ARG,5,45,7,23,0,0,0
+David Luiz,27,CB,DEF,44.55,Chelsea,Paris SG,2014,BRA,3,34,3,11,0,0,0
+Alexis Sanchez,25,LW,FWD,38.25,FC Barcelona,Arsenal,2014,CHI,14,43,19,13,0,0,0
+Diego Costa,25,ST,FWD,34.2,Atletico Madrid,Chelsea,2014,SPA,1,44,35,4,0,0,0
+Luke Shaw,18,LB,DEF,33.75,Southampton,Man Utd,2014,ENG,10,38,2,4,0,0,0
+Ander Herrera,24,CM,MID,32.4,Athletic,Man Utd,2014,SPA,1,33,5,6,0,0,0
+Romelu Lukaku,21,ST,FWD,31.82,Chelsea,Everton,2014,BEL,11,33,16,8,0,0,0
+Cesc Fabregas,27,CM,MID,29.7,FC Barcelona,Chelsea,2014,SPA,1,45,9,15,0,0,0
+Wilfried Bony,26,ST,FWD,29.07,Swansea,Man City,2014,IVO,23,37,21,4,0,0,0
+Andre Schurrle,24,LM,MID,28.8,Chelsea,VfL Wolfsburg,2014,GER,2,43,9,3,0,0,0
+Juan Cuadrado,26,RM,MID,27.9,Fiorentina,Chelsea,2014,COL,8,35,12,8,0,0,0
+Adam Lallana,26,CAM,MID,27.9,Southampton,Liverpool,2014,ENG,10,42,10,8,0,0,0
+Eliaquim Mangala,23,CB,DEF,27.45,FC Porto,Man City,2014,FRA,17,42,5,2,0,0,0
+Antoine Griezmann,23,ST,FWD,27,Real Sociedad,Atletico Madrid,2014,FRA,17,41,16,4,0,0,0
+Medhi Benatia,27,CB,DEF,25.2,AS Roma,Bayern Munich ,2014,MOR,77,37,5,0,0,0,0
+Dejan Lovren,25,CB,DEF,22.77,Southampton,Liverpool,2014,CRO,18,31,2,1,0,0,0
+Toni Kroos,24,CM,MID,22.5,Bayern Munich ,Real Madrid,2014,GER,2,42,3,6,0,0,0
+Enzo Perez,28,CM,MID,22.5,Benfica,Valencia,2014,SPA,1,47,5,8,0,0,0
+Lazar Markovic,20,RM,MID,22.5,Benfica,Liverpool,2014,SER,30,49,7,5,0,0,0
+Juan Iturbe,21,RW,FWD,22.05,Hellas Verona,AS Roma,2014,PAR,50,33,8,5,0,0,0
+Sadio Mane,22,LW,FWD,20.7,RB Salzburg,Southampton,2014,SEN,74,37,18,15,0,0,0
+Mario Mandzukic,28,ST,FWD,19.8,Bayern Munich ,Atletico Madrid,2014,CRO,18,41,21,9,0,0,0
+Calum Chambers,19,RB,DEF,18.21,Southampton,Arsenal,2014,ENG,10,26,0,0,0,0,0
+Kevin De Bruyne,24,CAM,MID,68.4,VfL Wolfsburg,Man City,2015,BEL,2,51,16,28,0,0,0
+Raheem Sterling,20,RW,FWD,57.33,Liverpool,Man City,2015,ENG,15,52,11,10,0,0,0
+Angel Di Maria,27,RW,FWD,56.7,Man Utd,Paris SG,2015,ARG,3,33,4,12,0,0,0
+Anthony Martial,19,LW,FWD,54,Monaco,Man Utd,2015,FRA,9,48,12,5,0,0,0
+Alex Teixeira,26,CAM,MID,45,Shakhtar D.,JS Suning,2015,BRA,5,37,22,4,0,0,1
+Christian Benteke,24,ST,FWD,41.85,Aston Villa,Liverpool,2015,BEL,2,34,15,3,0,0,0
+Nicolas Otamendi,27,CB,DEF,40.14,Valencia,Man City,2015,ARG,3,38,6,0,0,0,0
+Julian Draxler,21,CM,MID,38.7,FC Schalke 04,VfL Wolfsburg,2015,GER,1,19,2,2,0,0,0
+Jackson Martinez,29,ST,FWD,37.8,Atletico Madrid,GZ Evergrande,2015,COL,4,42,32,7,0,0,1
+Roberto Firmino,23,ST,FWD,36.9,TSG Hoffenheim,Liverpool,2015,BRA,5,36,10,12,0,0,0
+Paulo Dybala,21,CAM,MID,36,US Palermo,Juventus,2015,ARG,3,35,13,10,0,0,0
+Mateo Kovacic,21,CM,MID,34.2,Inter,Real Madrid,2015,CRO,18,44,8,5,0,0,0
+Arturo Vidal,28,CDM,MID,33.75,Juventus,Bayern Munich ,2015,CHI,19,45,8,4,0,0,0
+Jackson Martinez,28,ST,FWD,33.39,FC Porto,Atletico Madrid,2015,COL,4,42,32,7,0,0,0
+Geoffrey Kondogbia,22,CM,MID,32.4,Monaco,Inter,2015,FRA,9,33,2,1,0,0,0
+Morgan Schneiderlin,25,CDM,MID,31.5,Southampton,Man Utd,2015,FRA,9,30,5,1,0,0,0
+Arda Turan,28,CM,MID,30.6,Atletico Madrid,FC Barcelona,2015,TUR,57,46,3,6,0,0,0
+Memphis Depay,21,ST,FWD,30.6,PSV Eindhoven,Man Utd,2015,NED,6,40,28,8,0,0,0
+Danilo,23,RM,DEF,28.35,FC Porto,Real Madrid,2015,BRA,5,41,7,5,0,0,0
+Carlos Bacca,28,ST,FWD,27,Sevilla FC,AC Milan,2015,COL,4,56,28,10,0,0,0
+Douglas Costa,24,LM,MID,27,Shakhtar D.,Bayern Munich ,2015,BRA,5,33,5,7,0,0,0
+Rodrigo,24,RW,FWD,27,Benfica,Valencia,2015,SPA,10,32,4,5,0,0,0
+Heung-min Son,23,LM,MID,27,Bay. Leverkusen,Spurs,2015,KOR,58,42,17,4,0,0,0
+Ramires,28,CDM,MID,25.2,Chelsea,JS Suning,2015,BRA,5,34,4,4,0,0,1
+Alvaro Negredo,29,ST,FWD,25.2,Man City,Valencia,2015,SPA,10,34,6,5,0,0,0
+Paul Pogba,23,CM,MID,94.5,Juventus,Man Utd,2016,FRA,17,49,10,16,0,0,0
+Gonzalo Higuain,28,ST,FWD,81,SSC Napoli,Juventus,2016,ARG,1,42,38,3,0,0,0
+Oscar,25,CAM,MID,54,Chelsea,SIPG,2016,BRA,7,40,8,5,0,0,1
+Hulk,29,RW,FWD,50.22,Zenit S-Pb,SIPG,2016,BRA,7,39,23,25,0,0,1
+John Stones,22,CB,DEF,50.04,Everton,Man City,2016,ENG,11,41,0,0,0,0,0
+Leroy Sane,20,LW,FWD,45.45,FC Schalke 04,Man City,2016,GER,4,42,9,7,0,0,0
+Granit Xhaka,23,CDM,MID,40.5,Bor. M'gladbach,Arsenal,2016,SWI,15,36,3,2,0,0,0
+Henrikh Mkhitaryan,27,RM,MID,37.8,Bor. Dortmund,Man Utd,2016,ARM,110,52,23,32,0,0,0
+Sadio Mane,24,LW,FWD,37.08,Southampton,Liverpool,2016,SEN,41,43,15,9,0,0,0
+Shkodran Mustafi,24,CB,DEF,36.9,Valencia,Arsenal,2016,GER,4,44,2,2,0,0,0
+Joao Mario,23,CAM,MID,36,Sporting CP,Inter,2016,POR,5,45,7,12,0,0,0
+Michy Batshuayi,22,ST,FWD,35.1,Marseille,Chelsea,2016,BEL,2,50,23,10,0,0,0
+Eric Bailly,22,CB,DEF,34.2,Villarreal,Man Utd,2016,IVO,36,35,1,1,0,0,0
+Andre Gomes,22,CM,MID,33.3,Valencia,FC Barcelona,2016,POR,8,41,4,7,0,0,0
+Julian Draxler,23,CM,MID,32.4,VfL Wolfsburg,Paris SG,2016,GER,4,35,9,8,0,0,0
+N'Golo Kante,25,CDM,MID,32.22,Leicester,Chelsea,2016,FRA,17,40,1,4,0,0,0
+Mats Hummels,27,CB,DEF,31.5,Bor. Dortmund,Bayern Munich ,2016,GER,4,23,1,1,0,0,0
+David Luiz,29,CB,DEF,31.5,Paris SG,Chelsea,2016,BRA,7,40,3,3,0,0,0
+Moussa Sissoko,27,CM,MID,31.5,Newcastle,Spurs,2016,FRA,17,39,1,8,0,0,0
+Renato Sanches,18,CM,MID,31.5,Benfica,Bayern Munich ,2016,POR,8,47,6,1,0,0,0
+Miralem Pjanic,26,CM,MID,28.8,AS Roma,Juventus,2016,BOS,20,41,12,13,0,0,0
+Gabriel Jesus,19,ST,FWD,28.8,Palmeiras,Man City,2016,BRA,7,28,17,4,0,0,0
+Arkadiusz Milik,22,ST,FWD,28.8,AFC Ajax,SSC Napoli,2016,POL,27,42,24,12,0,0,0
+Christian Benteke,25,ST,FWD,28.08,Liverpool,Crystal Palace,2016,BEL,2,42,10,6,0,0,0
+Islam Slimani,28,ST,FWD,27.45,Sporting CP,Leicester,2016,ALG,32,46,31,6,0,0,0
+Neymar,25,LW,FWD,199.8,FC Barcelona,Paris SG,2017,BRA,1,45,20,26,0,0,0
+Philippe Coutinho,25,LW,FWD,121.5,Liverpool,FC Barcelona,2017,BRA,1,36,14,9,0,0,0
+Ousmane Dembele,20,RW,FWD,108,Bor. Dortmund,FC Barcelona,2017,FRA,6,49,10,21,0,0,0
+Romelu Lukaku,24,ST,FWD,76.23,Everton,Man Utd,2017,BEL,7,39,26,7,0,0,0
+Virgil van Dijk,26,CB,DEF,70.92,Southampton,Liverpool,2017,NED,31,48,3,0,0,0,0
+Diego Costa,29,ST,FWD,59.4,Chelsea,Atletico Madrid,2017,SPA,10,42,22,8,0,0,0
+Alvaro Morata,24,ST,FWD,59.4,Real Madrid,Chelsea,2017,SPA,10,43,20,6,0,0,0
+Aymeric Laporte,23,CB,DEF,58.5,Athletic,Man City,2017,FRA,6,43,2,0,0,0,0
+Pierre-Emerick Aubameyang,28,ST,FWD,57.38,Bor. Dortmund,Arsenal,2017,GAB,86,46,40,5,0,0,0
+Benjamin Mendy,23,LB,DEF,51.75,Monaco,Man City,2017,FRA,6,39,1,11,0,0,0
+Alexandre Lacazette,26,ST,FWD,47.7,Olympique Lyon,Arsenal,2017,FRA,6,45,37,5,0,0,0
+Kyle Walker,27,RB,DEF,47.43,Spurs,Man City,2017,ENG,13,39,0,5,0,0,0
+Bernardo Silva,22,RW,FWD,45,Monaco,Man City,2017,POR,8,58,11,12,0,0,0
+Gylfi Sigurdsson,27,CAM,MID,44.46,Swansea,Everton,2017,ICE,22,40,10,13,0,0,0
+Nemanja Matic,18,CDM,MID,40.23,Chelsea,Man Utd,2017,SER,50,40,2,8,0,0,0
+Leonardo Bonucci,29,CB,DEF,37.8,Juventus,AC Milan,2017,ITA,12,45,5,1,0,0,0
+Mohamed Salah,30,RW,FWD,37.8,AS Roma,Liverpool,2017,EGY,20,41,19,15,0,0,0
+Corentin Tolisso,25,CM,MID,37.35,Olympique Lyon,Bayern Munich ,2017,FRA,6,47,14,7,0,0,0
+Federico Bernardeschi,22,RM,MID,36,Fiorentina,Juventus,2017,ITA,12,42,14,5,0,0,0
+Cedric Bakambu,23,ST,FWD,36,Villarreal,BJ Sinobo Guoan,2017,CON,39,34,11,2,0,0,1
+Ederson,26,GK,GK,36,Benfica,Man City,2017,BRA,1,40,0,1,24,27,0
+Tiemoue Bakayoko,23,CDM,MID,36,Monaco,Chelsea,2017,FRA,6,51,3,1,0,0,0
+Paulinho,22,CM,MID,36,GZ Evergrande,FC Barcelona,2017,BRA,1,29,12,5,0,0,0
+Davinson Sanchez,29,CB,DEF,36,AFC Ajax,Spurs,2017,COL,5,46,6,2,0,0,0
+Andre Silva,21,ST,FWD,34.2,FC Porto,AC Milan,2017,POR,8,44,21,8,0,0,0
+Kylian Mbappe,19,RW,FWD,121.5,Monaco,Paris SG,2018,FRA,7,44,21,15,0,0,0
+Cristiano Ronaldo,33,ST,FWD,105.3,Real Madrid,Juventus,2018,POR,4,44,44,8,0,0,0
+Kepa,23,GK,GK,72,Athletic,Chelsea,2018,SPA,10,31,0,0,7,44,0
+Thomas Lemar,22,LM,MID,63,Monaco,Atletico Madrid,2018,FRA,7,38,3,10,0,0,0
+Riyad Mahrez,27,RW,FWD,61.02,Leicester,Man City,2018,ALG,66,41,13,13,0,0,0
+Christian Pulisic,20,RM,MID,57.6,Bor. Dortmund,Chelsea,2018,USA,25,42,5,7,0,0,0
+Alisson,25,GK,GK,56.25,AS Roma,Liverpool,2018,BRA,2,49,0,1,22,47,0
+Vinicius Junior,18,LW,FWD,54.9,Flamengo,Real Madrid,2018,BRA,2,17,6,3,0,0,0
+Naby Keita,23,CM,MID,54,RB Leipzig,Liverpool,2018,GUI,68,39,9,7,0,0,0
+Fred,25,CM,MID,53.1,Shakhtar D.,Man Utd,2018,BRA,2,37,4,7,0,0,0
+Jorginho,26,CM,MID,51.3,SSC Napoli,Chelsea,2018,ITA,19,39,4,4,0,0,0
+Fabinho,24,CDM,MID,40.5,Monaco,Liverpool,2018,BRA,2,46,8,5,0,0,0
+Paulinho,30,CM,MID,37.8,FC Barcelona,GZ Evergrande,2018,BRA,2,19,13,7,0,0,1
+Malcom,21,RW,FWD,36.9,G. Bordeaux,FC Barcelona,2018,BRA,2,38,12,8,0,0,0
+Joao Cancelo,24,RB,DEF,36.36,Valencia,Juventus,2018,POR,4,28,1,4,0,0,0
+Douglas Costa,27,LM,MID,36,Bayern Munich ,Juventus,2018,BRA,2,47,6,14,0,0,0
+Goncalo Guedes,21,LW,FWD,36,Paris SG,Valencia,2018,POR,4,38,6,11,0,0,0
+Leandro Paredes,24,CM,MID,36,Zenit S-Pb,Paris SG,2018,ARG,5,39,6,11,0,0,0
+Richarlison,21,LW,FWD,35.28,Watford,Everton,2018,BRA,2,41,5,5,0,0,0
+Radja Nainggolan,30,CM,MID,34.2,AS Roma,Inter,2018,BEL,3,42,6,11,0,0,0
+Felipe Anderson,25,LW,FWD,34.2,Lazio,West Ham,2018,BRA,2,32,8,10,0,0,0
+Thilo Kehrer,21,CB,DEF,33.3,FC Schalke 04,Paris SG,2018,GER,1,33,3,3,0,0,0
+Clement Lenglet,23,CB,DEF,32.31,Sevilla FC,FC Barcelona,2018,FRA,7,54,4,1,0,0,0
+Thibaut Courtois,26,GK,GK,31.5,Chelsea,Real Madrid,2018,BEL,3,46,0,1,19,47,0
+Leonardo Bonucci,31,CB,DEF,31.5,AC Milan,Juventus,2018,ITA,19,51,2,1,0,0,0
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,
+,,,,,,,,,,, ,,,,
